@@ -1,0 +1,1 @@
+SELECT * FROM semi_restful_users.users;

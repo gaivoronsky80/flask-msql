@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Add a New User:</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+	<div class="container">
+		<h1>Add a New User:</h1>
+		<a href="/users">Home</a>
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				{% for message in messages %}
+					<p>{{message}}</p>
+				{% endfor %}
+			{% endif %}
+		{% endwith %}
+		<form action="/new" method="POST">
+			<p>First Name:<br><input type="text" name="first_name" placeholder=""></p>
+			<p>Last Name:<br><input type="text" name="last_name" placeholder=""></p>
+			<p>Email:<br><input type="email" name="email" placeholder=""></p>
+			<input type="submit" name="submit" value="Create">
+		</form>
+	</div>
+</body>
+</html>
+
+

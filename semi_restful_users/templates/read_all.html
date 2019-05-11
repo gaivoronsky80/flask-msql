@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>All Users:</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+	<div class="container">
+		<h1>All Users:</h1>
+		<table class="table table-sm">
+		  <thead class="thead-dark">
+		    <tr>
+		      <th scope="col">ID</th>
+		      <th scope="col">Full name</th>
+		      <th scope="col">Email</th>
+		      <th scope="col">Created At</th>
+		      <th scope="col">Action</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		  	{% for i in users %}
+		    <tr>
+		    	<td>{{i['id']}}</td>
+		    	<td>{{i['full_name']}}</td>
+		    	<td>{{i['email']}}</td>
+		    	<td>{{i['created_at']}}</td>
+		    	<td><a href="/users/{{i['id']}}">Show &nbsp</a>|<a href="/edit/{{i['id']}}">&nbsp Edit &nbsp</a>|<a href="/delete/{{i['id']}}">&nbsp Delete</a></td>
+		    </tr>
+		    {% endfor %}
+		  </tbody>
+		</table>
+		<a href="/add_new">Add a New User</a>
+	</div>
+</body>
+</html>
