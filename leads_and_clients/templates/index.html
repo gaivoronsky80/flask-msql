@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>All Users:</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+	<script>
+		window.onload = function () {
+		var options = {
+			title: {
+				text: "Customers and number of new leads"
+			},
+			subtitles: [{
+				text: ""
+			}],
+			animationEnabled: true,
+			data: [{
+				type: "pie",
+				startAngle: 40,
+				toolTipContent: "<b>{label}</b>: {y}",
+				showInLegend: "true",
+				legendText: "{label}",
+				indexLabelFontSize: 16,
+				indexLabel: "{label} - {y}",
+				dataPoints: [
+					{ y: 2, label: "Andrii Gaivoronskyi" },
+					{ y: 1, label: "Tom Riedle" },
+					{ y: 1, label: "Ann Smith" }
+				]
+			}]
+		};
+		$("#chartContainer").CanvasJSChart(options);
+
+		}
+	</script>
+</head>
+<body>
+	<div class="container">
+		<h1>List of all customers and # of Leads</h1>
+		<table class="table table-sm">
+		  <thead class="thead-dark">
+		    <tr>
+		      <th scope="col">Customer Name</th>
+		      <th scope="col">Numbers of Leads</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		  	{% for i in users_leads %}
+		    <tr>
+		    	<td id="full_name">{{i['full_name']}}</td>
+		    	<td id="quant">{{i['quant']}}</td>
+		    </tr>
+		    {% endfor %}
+		  </tbody>
+		</table>
+	</div>
+	<div class="container">
+		<div id="chartContainer" style="height: 300px; width: 100%;">
+			
+		</div>
+	</div>
+	<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+	<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+</body>
+</html>
+
+
+<body>
+
+
+</body>
+</html>
