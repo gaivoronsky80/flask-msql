@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>All the Pets!</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body style="text-align: center;">
+	<div class="container">
+		<hr>
+		<h1>All the Pets!</h1>
+		<hr>
+		<table class="table table-sm">
+		  <thead class="thead-dark">
+		    <tr>
+		      <th scope="col">ID</th>
+		      <th scope="col">Name</th>
+		      <th scope="col">Type</th>
+		    </tr>
+		  </thead>
+		  {% for one_pet in all_pets %}
+		  <tbody>
+		    <tr>
+		    {% for i in one_pet %}
+		      <td>{{one_pet[i]}}</td>
+		    {% endfor %}
+		    </tr>
+		  </tbody>
+		  {% endfor %}
+		</table>
+		<hr>
+		<h1>Add a Pet!</h1>
+		<hr>
+		<form action="/add_pet" method="POST">
+			<p>Name: <input type="text" name="pet_name" placeholder="add a pet's name"></p>
+			<p>Type: <input type="text" name="pet_type" placeholder="add a pet's type"></p>
+			<input type="submit" name="submit" value="Add">
+		</form>
+		<hr>
+	</div>
+</body>
+</html>
+
+
+
+
+<!-- {% for one_pet in all_pets %}
+	<div class="container">
+  		<div class="row">
+  			{% for i in one_pet %}
+    		<div class="col-sm">{{one_pet[i]}}</div>
+    		{% endfor %}
+  		</div>
+	</div>
+	{% endfor %} -->
+
