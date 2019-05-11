@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>User Info</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+	<div class="wrapper">
+		<h2>Advanced Login - <br>
+		Normal User Page</h2>
+		<a href="logout">
+			<button class="btn btn-primary btn-lg btn-block">Log Out</button>
+		</a>
+		<hr>
+		{% for i in info %}
+		<p>Hello {{i['first_name']}}! You're just a normal user. Untill we add some features you
+		can't do much yet... Sorry.</p>
+		{% endfor %}
+	</div>
+</body>
+</html>

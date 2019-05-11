@@ -1,0 +1,14 @@
+* {
+	padding: 0px;
+	margin: 0px;
+}
+
+a {
+	text-decoration: none;
+}
+
+.wrapper {
+	width: 30%;
+	margin-left: 100px;
+	margin-top: 20px;
+}

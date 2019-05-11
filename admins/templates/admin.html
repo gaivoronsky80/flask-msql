@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Advanced Login - Admin Dashboard</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+	<div class="container">
+		<h2>Advanced Login - Admin Page</h2>
+		<h3>Welcome, {{result[0]['first_name']}}!</h3>
+		<a href="logout">
+			<button class="btn btn-primary btn-lg btn-block">Log Out</button>
+		</a>
+		{% with messages = get_flashed_messages(category_filter=["warning"]) %}
+			{% for message in messages %}
+				<p style="color: red; font-size: 0.5em">{{message}}</p>
+			{% endfor %}
+		{% endwith %}
+		<hr>
+		<table class="table table-sm">
+		  <thead class="thead-dark">
+		    <tr>
+		      <th scope="col">ID</th>
+		      <th scope="col">Full name</th>
+		      <th scope="col">Email</th>
+		      <th scope="col">Status</th>
+		      <th scope="col">Action</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		  	{% for i in users %}
+		    <tr>
+		    	<td>{{i['user_id']}}</td>
+		    	<td>{{i['first_name']}} {{i['last_name']}}</td>
+		    	<td>{{i['email']}}</td>
+		    	<td>{{i['user_level']}}</td>
+		    	<td>
+		    		<a href="/delete/{{i['user_id']}}">Remove &nbsp</a>|
+		    		<a href="/switch/{{i['user_id']}}">&nbsp Switch</a>
+		    	</td>
+		    </tr>
+		    {% endfor %}
+		  </tbody>
+		</table>
+	</div>
+</body>
+</html>
