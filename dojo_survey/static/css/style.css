@@ -1,0 +1,17 @@
+.body {
+	width: 500px;
+	height: 100%;
+	margin-left: 25px;
+	-webkit-box-shadow: 0 8px 8px -4px black;
+   	-moz-box-shadow: 0 8px 8px -4px black;
+        box-shadow: 0 8px 8px -4px black;
+}
+
+.wrapper {
+	width: 400px;
+	height: 100%;
+	margin-left: 50px;
+	margin-top: 50px;
+}
+
+

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Success!</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+	<div class="body">
+		<div class="wrapper">
+			<h3 style="text-decoration: underline;">Submitted Info</h3>
+			<div>			
+				<p>Full Name: {{session['first_name']}} {{session['last_name']}}</p>
+				<p>Dojo Location: {{session['location']}}</p>
+				<p>Favotite language: {{session['language']}}</p>
+				<p>Comment: {{session['comment']}}</p>
+				<a href="/">Go Back</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
