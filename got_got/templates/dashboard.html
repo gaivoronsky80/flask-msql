@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>dotNet Flix</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+	rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+	crossorigin="anonymous">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+	<div class="wrapper">
+		<header>
+			<h1>Got GOT?</h1>
+			<a href="dashboard" class="link_left">Dashboard </a>
+			|
+			<a href="shows" class="link_right"> Upcoming Shows </a>
+			|
+			<a href="logout"> Logout</a>
+		</header>
+		<div class="content">
+			<div>
+				<h3>Status</h3>
+				<div class="left">
+					{% for i in user %}
+					<p>Name: {{i['first_name']}} {{i['last_name']}}</p>
+					{% endfor %}
+					{% for i in num_of_host %}
+					<p># of Events Hosted: {{i['my_host']}}</p>
+					{% endfor %}
+					{% for i in num_of_join %}
+					<p># of Events Joined: {{i['my_join']}}</p>
+					{% endfor %}
+					{% for i in user %}
+					<p>Registrstion Date: {{i['created_at']}}</p>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="right">
+				<a href="new_event">
+					<button class="btn btn-primary btn-lg">CREATE A EVENT</button>
+				</a>
+			</div>
+		</div>
+		<div class="content">
+			<h3>Your Upcoming Events</h3>
+			<table class="table table-sm">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">Name</th>
+							<th scope="col">Location</th>
+							<th scope="col">When</th>
+							<th scope="col">Action</th>
+						</tr>
+				</thead>
+				<tbody>
+					{% for i in p_events %}
+					<tr>
+						<td >{{i['title']}}</td>
+						<td >{{i['location']}}</td>
+						<td >{{i['date_and_time']}}</td>
+						<td>
+							<a href="/event/{{i['event_id']}}">View &nbsp</a>|
+							<a href="/edit_event/{{i['event_id']}}">&nbsp Edit</a>
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, 
+	shrink-to-fit=no">
+	<title>dotNet Flix</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/
+	bootstrap.min.css" rel="stylesheet" 
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+	crossorigin="anonymous">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+	<div class="wrapper">
+		<header>
+			<h1>Got GOT?</h1>
+			<a href="/dashboard" class="link_left">Dashboard </a>
+			|
+			<a href="/shows" class="link_right"> Upcoming Shows </a>
+			|
+			<a href="/logout"> Logout</a>
+		</header>
+		<div class="left">
+			{% for i in event_info %}
+			<h3>{{i['title']}}</h3>
+			<p>Genre: {{i['type_of_event']}}</p>
+			<p>When: {{i['date_and_time']}}</p>
+			<p>Location: {{i['location']}}</p>
+			<h3>Attendees:</h3>
+			<p>{{i['first_name']}}</p>
+			{% with messages = get_flashed_messages(category_filter=["button"]) %}
+				{% for message in messages %}
+					<a href="/join/{{i['event_id']}}">
+						<button class="btn btn-primary btn-lg btn-block">{{message}}</button>
+					</a>
+				{% endfor %}
+			{% endwith %}
+			<br>
+			{% endfor %}
+			<a href="/shows">Step Back</a>
+		</div>
+	</div>
+</body>
+</html>
