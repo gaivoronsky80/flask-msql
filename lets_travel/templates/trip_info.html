@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, 
+	shrink-to-fit=no">
+	<title>View trip</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/
+	bootstrap.min.css" rel="stylesheet" 
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+	crossorigin="anonymous">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+	<div class="wrapper">
+		<header>
+			<h2>Hello, {{result[0]['first_name']}}! Read about this trip!</h2>
+			<a href="/dashboard" class="link_right">Dashboard </a>
+			|
+			<a href="/logout" class="link_right"> Logout</a>
+		</header>
+		<div class="left">
+			{% for i in trip_info %}
+			<h3>{{i['destination']}}</h3>
+			<p style="background-color: lightgray">Start Date: {{i['start_date']}}</p>
+			<p>End Date: {{i['end_date']}}</p>
+			<p style="background-color: lightgray">Created On: {{i['created_at']}}</p>
+			<p>Last Updated: {{i['updated_at']}}</p>
+			<p style="background-color: lightgray">Plan: {{i['plan']}}</p>
+			{% endfor %}
+			{% for i in created_by %}
+			<p>Created by: {{i['first_name']}}</p>
+			{% endfor %}
+			<h3>People who've joined the trip:</h3>
+			{% for i in trips_users%}
+			<p>{{i[first_name]}}</p>
+			{% endfor %}
+		</div>
+	</div>
+</body>
+</html>

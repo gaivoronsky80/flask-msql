@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Edit Trip</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+	rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+	crossorigin="anonymous">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+	<div class="wrapper">
+	<header>
+		<h2>Hello, {{result[0]['first_name']}}! Let's edit your trip!</h2>
+		<a href="/logout"> Logout</a>		
+	</header>
+		<div class="left">
+			{% for i in trip_info %}
+			<form action="/update_trip/{{i['trip_id']}}" method="post">
+				{% with messages = get_flashed_messages(category_filter=["destination_sms"]) %}
+					{% for message in messages %}
+						<p style="color: red; font-size: 0.5em">{{message}}</p>
+					{% endfor %}
+				{% endwith %}
+				Destination: 
+				<input class="form-control" type="text" name="destination" placeholder="{{i['destination']}}">
+				<br>
+				{% with messages = get_flashed_messages(category_filter=["start_date_sms"]) %}
+					{% for message in messages %}
+						<p style="color: red; font-size: 0.5em">{{message}}</p>
+					{% endfor %}
+				{% endwith %}
+				Start Date:<br> 
+				<input class="form-control" type="date" name="start_date" placeholder="{{i['start_date']}}">
+				<br>
+				{% with messages = get_flashed_messages(category_filter=["end_date_sms"]) %}
+					{% for message in messages %}
+						<p style="color: red; font-size: 0.5em">{{message}}</p>
+					{% endfor %}
+				{% endwith %}
+				End Date:<br> 
+				<input class="form-control" type="date" name="end_date" placeholder="{{i['end_date']}}">
+				<br>
+				{% with messages = get_flashed_messages(category_filter=["plan_sms"]) %}
+					{% for message in messages %}
+						<p style="color: red; font-size: 0.5em">{{message}}</p>
+					{% endfor %}
+				{% endwith %}
+				Plan:
+				<textarea class="form-control" type="text" name="plan" placeholder="{{i['plan']}}"></textarea>
+				<br>
+				<button class="btn btn-primary btn-lg btn-block">UPDATE TRIP</button>
+				<br>
+				<a href="/dashboard" class="btn btn-primary btn-lg btn-block">CANCEL</a>
+			</form>
+			{% endfor %}
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Trip Buddy</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+	rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+	crossorigin="anonymous">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+	<div class="wrapper">
+		<header>
+			<h1>Welcome! Let's travel!</h1>
+		</header>
+		<div class="left">
+			<h3>Register</h3>
+			<form action="/add" method="post">
+				{% with messages = get_flashed_messages(category_filter=["fname_sms"]) %}
+					{% for message in messages %}
+						<p style="color: red; font-size: 0.5em">{{message}}</p>
+					{% endfor %}
+				{% endwith %}
+				<p>First Name:<br>
+					<input class="form-control" type="text" name="first_name">
+				</p>
+				{% with messages = get_flashed_messages(category_filter=["lname_sms"]) %}
+					{% for message in messages %}
+						<p style="color: red; font-size: 0.5em">{{message}}</p>
+					{% endfor %}
+				{% endwith %}
+				<p>Last Name:<br>
+					<input class="form-control" type="text" name="last_name">
+				</p>
+				{% with messages = get_flashed_messages(category_filter=["email_sms"]) %}
+					{% for message in messages %}
+						<p style="color: red; font-size: 0.5em">{{message}}</p>
+					{% endfor %}
+				{% endwith %}
+				{% with messages = get_flashed_messages(category_filter=["exist"]) %}
+					{% for message in messages %}
+						<p style="color: blue; font-size: 0.5em">{{message}}</p>
+					{% endfor %}
+				{% endwith %}
+				<p>Email:<br>
+					<input class="form-control" type="email" name="email">
+				</p>
+				{% with messages = get_flashed_messages(category_filter=["password_sms"]) %}
+					{% for message in messages %}
+						<p style="color: red; font-size: 0.5em">{{message}}</p>
+					{% endfor %}
+				{% endwith %}
+				<p>Password:<br>
+					<input class="form-control" type="password" name="password">
+				</p>
+				<p style="font-size: 0.5em">Password must contain at least one 
+				lowercase letter, one uppercase letter, and one digit</p>
+				{% with messages = get_flashed_messages(category_filter=["c_password_sms"]) %}
+					{% for message in messages %}
+						<p style="color: red; font-size: 0.5em">{{message}}</p>
+					{% endfor %}
+				{% endwith %}
+				<p>Confirm Password:<br>
+					<input class="form-control" type="password" name="confirm_password">
+				</p>
+				<input class="btn btn-primary btn-lg btn-block" type="submit" 
+				name="submit" value="REGISTER">
+			</form>
+		</div>
+		<div class="right">
+			<h3>Login</h3>
+			<form action="/login" method="post">
+				{% with messages = get_flashed_messages(category_filter=["email_sms"]) %}
+					{% for message in messages %}
+						<p style="color: red; font-size: 0.5em">{{message}}</p>
+					{% endfor %}
+				{% endwith %}
+				{% with messages = get_flashed_messages(category_filter=["danger"]) %}
+					{% for message in messages %}
+						<p style="color: red; font-size: 0.5em">{{message}}</p>
+					{% endfor %}
+				{% endwith %}
+				<p>Email:<br>
+					<input class="form-control" type="email" name="email"></p>
+				{% with messages = get_flashed_messages(category_filter=["password_sms"]) %}
+					{% for message in messages %}
+						<p style="color: red; font-size: 0.5em">{{message}}</p>
+					{% endfor %}
+				{% endwith %}
+				<p>Password:<br>
+					<input class="form-control" type="password" name="password">
+				</p>
+				<input class="btn btn-primary btn-lg btn-block" type="submit" 
+				name="submit" value="LOGIN">
+			</form>
+		</div>
+	</div>
+</body>
+</html>
