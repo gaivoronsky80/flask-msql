@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>User Info</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+	<div class="container">
+		{% for i in info %}
+		<h1>User {{i['id']}}</h1>
+		<p>Full Name: {{i['first_name']}} {{i['last_name']}}</p>
+		<p>Email: {{i['email']}}</p>
+		<p>Created On: {{i['created_at']}}</p>
+		<p>Last Updated On: {{i['updated_at']}}</p>	
+		<div>
+			<a href="update/{{i['id']}}">Edit &nbsp</a> |
+			<a href="delete/{{i['id']}}">&nbsp Delete</a>
+		</div>
+		<a href="wall_chat">
+			<button>Chat</button>
+		</a>
+		{% endfor %}
+		<a href="logout">
+			<button>Log Out</button>
+		</a>
+	</div>
+</body>
+</html>

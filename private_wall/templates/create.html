@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Registration Form</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+	<div class="container">
+		<h1>Register Here!</h1>
+		<form action="/add" method="post">
+			{% with messages = get_flashed_messages(category_filter=["fname_sms"]) %}
+				{% for message in messages %}
+					<p style="color: red; font-size: 0.5em">{{message}}</p>
+				{% endfor %}
+			{% endwith %}
+			<p>First Name:<br><input type="text" name="first_name"></p>
+			{% with messages = get_flashed_messages(category_filter=["lname_sms"]) %}
+				{% for message in messages %}
+					<p style="color: red; font-size: 0.5em">{{message}}</p>
+				{% endfor %}
+			{% endwith %}
+			<p>Last Name:<br><input type="text" name="last_name"></p>
+			{% with messages = get_flashed_messages(category_filter=["email_sms"]) %}
+				{% for message in messages %}
+					<p style="color: red; font-size: 0.5em">{{message}}</p>
+				{% endfor %}
+			{% endwith %}
+			<p>Email:<br><input type="email" name="email"></p>
+			{% with messages = get_flashed_messages(category_filter=["password_sms"]) %}
+				{% for message in messages %}
+					<p style="color: red; font-size: 0.5em">{{message}}</p>
+				{% endfor %}
+			{% endwith %}
+			<p>Password:<br><input type="password" name="password"></p>
+			<p style="font-size: 0.5em">Password must contain at least one lowercase letter, one uppercase letter, and one digit</p>
+			{% with messages = get_flashed_messages(category_filter=["c_password_sms"]) %}
+				{% for message in messages %}
+					<p style="color: red; font-size: 0.5em">{{message}}</p>
+				{% endfor %}
+			{% endwith %}
+			<p>Confirm Password:<br><input type="password" name="confirm_password"></p>
+			<input type="submit" name="submit" value="SignUp">
+		</form>
+		<form action="/">
+			<input type="submit" name="submit" value="LogIn">
+		</form>
+	</div>
+</body>
+</html>
+
+
