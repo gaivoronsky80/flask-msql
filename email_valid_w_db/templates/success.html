@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Success!</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <p style="background-color: green; color: black; border: 1px solid black; padding: 5px 30px 5px 30px; display: inline-block;">The email address you entered {{email}} is a VALID email address! Thank you!</p>
+        <div class='container'>
+            <h1 style="text-decoration: underline;">Email Addresses Entered:</h1>
+            {% if query %}
+            <table>
+                {% for email in query %}
+                <tr>
+                    <td>{{email['email']}} {{email['created_at'].strftime('%Y/%m/%d %I:%M %p')}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
